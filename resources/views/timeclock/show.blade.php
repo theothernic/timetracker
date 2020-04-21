@@ -5,16 +5,38 @@
         var tick = setInterval(() => {
             var currentTime = new Date();
             var lblCurrentTime = document.getElementsByClassName('lblCurrentTime')[0];
-            var txtCurrentTime = document.getElementById('txtCurrentTime');
+            var txtStampedTime = document.getElementById('txtStampedTime');
 
             lblCurrentTime.innerHTML = currentTime.toString();
-            txtCurrentTime.value = currentTime.toISOString();
+            txtStampedTime.value = currentTime.getTime();
         }, 1000);
     </script>
 @endsection
 
+@section('messages')
+    @if ($errors->any())
+    <div class="container">
+        <div class="row">
+            <div class="alert-warning">
+                <h3>Oh, no...</h3>
+
+                <ul>
+                    @foreach($errors->all() as $err)
+                    <li>{{ $err }}</li>
+                    @endforeach
+                </ul>
+            </div>
+        </div>
+    </div>
+    @endif
+@endsection
+
 
 @section('content')
+
+    @yield('messages')
+
+
     <div class="container">
         <div class="row">
             <div class="col-md-2"></div>
@@ -30,7 +52,7 @@
                         <h2>Clock In/Out</h2>
 
                         <div class="current_time">Time now is: <strong><span class="lblCurrentTime"></span></strong></div>
-                        <input type="hidden" id="txtCurrentTime" name="current_time" />
+                        <input type="hidden" id="txtStampedTime" name="stamp" />
 
 
                         <div class="actions">
