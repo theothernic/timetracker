@@ -4,7 +4,7 @@
 Timetracker is a simple time-tracking app that allows you to log in
 and clock in and out, and see your timesheet.
 
-Timetracker is built upon Laravel, and uses Bootstrap.
+Timetracker is built upon Laravel (v7), and uses Bootstrap.
 
 
 ## How can I use it?
