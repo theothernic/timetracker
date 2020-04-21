@@ -20,3 +20,10 @@ Route::get('/', function () {
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
+
+// Clock punch.
+Route::get('clock', 'TimesheetController@clock')->name('timesheet.clock');
+Route::post('clock', 'TimesheetController@punch')->name('timesheet.punch');
+
+// Reports.
+Route::get('reporting/timesheet', 'ReportingController@timesheet')->name('reporting.timesheet');
