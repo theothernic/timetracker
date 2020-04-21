@@ -1,5 +1,18 @@
 @extends('layouts.app')
 
+@section('scripts-bottom')
+    <script type="text/javascript">
+        var tick = setInterval(() => {
+            var currentTime = new Date();
+            var lblCurrentTime = document.getElementsByClassName('lblCurrentTime')[0];
+            var txtCurrentTime = document.getElementById('txtCurrentTime');
+
+            lblCurrentTime.innerHTML = currentTime.toString();
+            txtCurrentTime.value = currentTime.toISOString();
+        }, 1000);
+    </script>
+@endsection
+
 
 @section('content')
     <div class="container">
@@ -8,23 +21,21 @@
             <div class="col-md-8">
 
 
-                <form id="frmPunchClock" name="frmPunchClock" method="post" action="{{ route('clock.punch') }}" >
+                <form id="frmPunchClock" name="frmPunchClock" method="post" action="{{ route('timeclock.punch') }}" >
                     @csrf
 
                     <h1>Time Clock</h1>
 
                     <fieldset>
-                        <legend>Punch Clock</legend>
+                        <h2>Clock In/Out</h2>
 
-                        <div class="current_time">Time now is: <strong>{{ (\Carbon\Carbon::now())->format('F d, Y g:i a') }}</strong></div>
+                        <div class="current_time">Time now is: <strong><span class="lblCurrentTime"></span></strong></div>
+                        <input type="hidden" id="txtCurrentTime" name="current_time" />
 
 
                         <div class="actions">
                             <button id="cmdSubmit" name="cmdSubmit" class="btn btn-primary" type="submit">Punch Clock</button>
                         </div>
-
-
-
                     </fieldset>
                 </form>
 

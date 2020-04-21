@@ -8,12 +8,12 @@
         public function clock()
         {
             $viewData = [];
-            return view('clock.show', $viewData);
+            return view('timeclock.show', $viewData);
         }
 
         // POST /clock
         public function punch()
         {
-            return redirect()->route('clock.show');
+            return redirect()->route('timeclock.show');
         }
     }

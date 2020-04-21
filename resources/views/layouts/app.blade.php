@@ -35,7 +35,7 @@
                     <ul class="navbar-nav mr-auto">
                         @auth
                             <li class="nav-item">
-                                <a class="nav-link" href="{{ route('timesheet.clock') }}">Show Timeclock</a>
+                                <a class="nav-link" href="{{ route('timeclock.show') }}">Show Timeclock</a>
                             </li>
                             <li class="nav-item">
                                 <a class="nav-link" href="{{ route('reporting.timesheet') }}">View Timesheet</a>
@@ -83,5 +83,7 @@
             @yield('content')
         </main>
     </div>
+
+    @yield('scripts-bottom')
 </body>
 </html>

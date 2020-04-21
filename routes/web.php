@@ -22,8 +22,8 @@ Auth::routes();
 Route::get('/home', 'HomeController@index')->name('home');
 
 // Clock punch.
-Route::get('clock', 'TimeclockController@clock')->name('clock.show');
-Route::post('clock', 'TimeclockController@punch')->name('clock.punch');
+Route::get('clock', 'TimeclockController@clock')->name('timeclock.show');
+Route::post('clock', 'TimeclockController@punch')->name('timeclock.punch');
 
 // Reports.
 Route::get('reporting/timesheet', 'ReportingController@timesheet')->name('reporting.timesheet');
