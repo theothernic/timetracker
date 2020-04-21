@@ -16,6 +16,7 @@ Timetracker is built upon Laravel (v7), and uses Bootstrap.
  1. Clone the project from GitHub.
  1. Run `composer install`
  1. Run `php artisan migrate`
+ 1. Run `npm install && npm run dev`
 
 
 Nicholas Barr http://nicholasbarr.net/
