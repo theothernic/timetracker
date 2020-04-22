@@ -1,27 +1,32 @@
 @extends('layouts.app')
 
+@section('timesheet.pages')
+    @if (isset($records))
+        <div class="page-select"><span>Go to page:</span> {{ $records->links() }}</div>
+    @endif
+@endsection
 
 @section('timesheet.table')
     <table class="table table-striped table-bordered">
         <tbody>
-            @if (isset($user) && !is_null($user->timeclocks))
+            @if (isset($records) && !$records->isEmpty())
 
-            @foreach($user->timeclocks as $tc)
+            @foreach($records as $record)
             <tr class="{{ ($loop->odd) ? 'table-primary' : 'table-secondary' }}">
-                <td>{{ $user->name }}</td>
-                <td>{{ ucwords($tc->direction) }}
+                <td>{{ $record->user->name }}</td>
+                <td>{{ ucwords($record->direction) }}
                     <span class="fa
                         {{ ($loop->odd) ? 'text-primary' : 'text-secondary' }}
-                        {{ ($tc->direction == 'out') ? 'fa-arrow-circle-right' : 'fa-arrow-circle-left' }}"></span>
+                        {{ ($record->direction == 'out') ? 'fa-arrow-circle-right' : 'fa-arrow-circle-left' }}"></span>
                 </td>
-                <td>{{ $tc->stamp->tz('America/New_York')->format('D M d Y H:i:s O') }}</td>
+                <td>{{ $record->stamp->tz('America/New_York')->format('D M d Y H:i:s O') }}</td>
 
             </tr>
             @endforeach
 
             @else
             <tr>
-                <td>No timeclock entries are available to view.</td>
+                <td colspan="3">No timeclock entries are available to view.</td>
             </tr>
             @endif
         </tbody>
@@ -41,8 +46,11 @@
             <div class="col-md-12">
                 <h1>Timesheet Report</h1>
 
-
+                @yield('timesheet.pages')
                 @yield('timesheet.table')
+                @yield('timesheet.pages')
+
+
             </div>
         </div>
     </div>

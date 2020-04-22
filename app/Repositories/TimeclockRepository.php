@@ -9,6 +9,19 @@
     class TimeclockRepository
     {
 
+        public static function getAllForUserDescending(User $user)
+        {
+            return Timeclock::where(['user_id' => $user->id])
+                ->orderBy('created_at', 'DESC');
+        }
+
+        /**
+         * @param User $user
+         * @param $data
+         * @return mixed
+         *
+         * Determine the next direction in sequence, and add punch to database.
+         */
         public static function punchClock(User $user, $data)
         {
 
