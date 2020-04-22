@@ -16,6 +16,7 @@
 
                     Hello, {{ explode(' ', Auth::user()->name)[0] }}. You are logged in!
 
+                    @if (isset($record))
                     <div class="punch-status bg-primary text-light">
                         <h4>Current Punch Status</h4>
 
@@ -28,6 +29,7 @@
                             <a class="btn btn-sm btn-light text-secondary" href="{{ route('reporting.timesheet') }}"><span class="fa fa-table"></span> View Timesheet</a>
                         </div>
                     </div>
+                    @endif
                 </div>
             </div>
         </div>
