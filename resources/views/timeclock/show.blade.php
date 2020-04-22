@@ -14,18 +14,36 @@
 @endsection
 
 @section('messages')
-    @if ($errors->any())
+    @if ($errors->any() || Session::has('success'))
     <div class="container">
         <div class="row">
-            <div class="alert-warning">
-                <h3>Oh, no...</h3>
+            <div class="col-md-3"></div>
+            <div class="col-md-6">
 
-                <ul>
-                    @foreach($errors->all() as $err)
-                    <li>{{ $err }}</li>
-                    @endforeach
-                </ul>
+                @if ($errors->any())
+                <div class="alert alert-warning">
+                    <h3>Oh, no...</h3>
+
+                    <ul>
+                        @foreach($errors->all() as $err)
+                            <li>{{ $err }}</li>
+                        @endforeach
+                    </ul>
+                </div>
+                @endif
+
+
+                @if(Session::has('success'))
+                <div class="alert alert-success">
+                    <h3>Success!</h3>
+
+                    <p>
+                        {{ Session::get('success') }}
+                    </p>
+                </div>
+                @endif
             </div>
+            <div class="col-md-3"></div>
         </div>
     </div>
     @endif
@@ -39,8 +57,8 @@
 
     <div class="container">
         <div class="row">
-            <div class="col-md-2"></div>
-            <div class="col-md-8">
+            <div class="col-md-3"></div>
+            <div class="col-md-6">
 
 
                 <form id="frmPunchClock" name="frmPunchClock" method="post" action="{{ route('timeclock.punch') }}" >
@@ -48,20 +66,25 @@
 
                     <h1>Time Clock</h1>
 
-                    <fieldset>
-                        <h2>Clock In/Out</h2>
+                    <div class="card">
+                        <div class="card-header">
+                            Clock In/Out
+                        </div>
 
-                        <div class="current_time">Time now is: <strong><span class="lblCurrentTime"></span></strong></div>
-                        <input type="hidden" id="txtStampedTime" name="stamp" />
+                        <div class="card-body">
+                            <div class="displayTime">Time now is: <strong><span class="lblCurrentTime"></span></strong></div>
+                            <input type="hidden" id="txtStampedTime" name="stamp" />
+                        </div>
 
-
-                        <div class="actions">
+                        <div class="card-footer">
                             <button id="cmdSubmit" name="cmdSubmit" class="btn btn-primary" type="submit">Punch Clock</button>
                         </div>
-                    </fieldset>
+
+                    </div>
                 </form>
 
             </div>
+            <div class="col-md-3"></div>
         </div>
     </div>
 @endsection

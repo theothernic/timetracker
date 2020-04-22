@@ -6,7 +6,7 @@
     use App\Repositories\TimeclockRepository;
     use Illuminate\Support\Facades\Auth;
 
-    class TimeclockController extends Controller
+    class TimeclockController extends ProtectedController
     {
         // GET /clock
         public function clock()
@@ -20,8 +20,11 @@
         {
             $data = $request->validated();
 
-            TimeclockRepository::punchClock(Auth::user(), $data);
+            if (!$timeclock = TimeclockRepository::punchClock(Auth::user(), $data))
+            {
+                return redirect()->route('timeclock.show')->withErrors('Could not save time punch to the database.');
+            }
 
-            return redirect()->route('timeclock.show');
+            return redirect()->route('timeclock.show')->with('success', 'Successfully punched ' . $timeclock->direction . '.');
         }
     }

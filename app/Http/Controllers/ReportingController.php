@@ -1,8 +1,15 @@
 <?php
     namespace App\Http\Controllers;
 
-    class ReportingController extends Controller
+    class ReportingController extends ProtectedController
     {
 
-        public function
+        public function timesheet()
+        {
+            $viewData = [
+                'user' => Auth::user()
+            ];
+
+            return view('reporting.timesheet', $viewData);
+        }
     }
