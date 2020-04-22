@@ -12,11 +12,11 @@
             @if (isset($records) && !$records->isEmpty())
 
             @foreach($records as $record)
-            <tr class="{{ ($loop->odd) ? 'table-primary' : 'table-secondary' }}">
+            <tr class="{{ ($loop->odd) ? 'table-success' : 'table-secondary' }}">
                 <td>{{ $record->user->name }}</td>
                 <td>{{ ucwords($record->direction) }}
                     <span class="fa
-                        {{ ($loop->odd) ? 'text-primary' : 'text-secondary' }}
+                        {{ ($loop->odd) ? 'text-success' : 'text-dark' }}
                         {{ ($record->direction == 'out') ? 'fa-arrow-circle-right' : 'fa-arrow-circle-left' }}"></span>
                 </td>
                 <td>{{ $record->stamp->tz('America/New_York')->format('D M d Y H:i:s O') }}</td>

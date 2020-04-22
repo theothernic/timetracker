@@ -16951,6 +16951,7 @@ readers do not read off random characters that represent icons */
 
 .punch-status {
   margin: 1rem 0 0 0;
+  padding: 1rem;
 }
 
 .punch-status .status-badge {
@@ -16958,6 +16959,6 @@ readers do not read off random characters that represent icons */
 }
 
 .punch-status .actions {
-  margin: 0.5rem 0 0 0;
+  margin: 1rem 0;
 }
 

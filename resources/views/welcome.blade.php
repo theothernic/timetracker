@@ -83,6 +83,11 @@
                 <div class="title m-b-md">
                     {{ env('APP_NAME', 'Laravel') }}
                 </div>
+
+                <div class="links">
+                    <a href="{{ route('login') }}">Get Signed In</a>
+                    <a href="{{ route('register') }}">Register For The App</a>
+                </div>
             </div>
         </div>
     </body>

@@ -76,7 +76,10 @@
                         </div>
 
                         <div class="card-footer">
-                            <button id="cmdSubmit" name="cmdSubmit" class="btn btn-primary" type="submit">Punch Clock</button>
+                            <button id="cmdSubmit" name="cmdSubmit" class="btn btn-primary" type="submit">
+                                <span class="fa fa-clock"></span> Punch Clock</button>
+                            <a id="cmdClose" title="Close clock and return to dashboard" href="{{ route('home') }}"
+                               class="btn btn-outline-dark"><span class="fa fa-times"></span> Close</a>
                         </div>
 
                     </div>
