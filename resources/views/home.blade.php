@@ -22,12 +22,17 @@
 
 
                         @if (isset($record))
-                            Currently punched <span class="badge badge-{{ ($record->direction == 'in') ? 'success' : 'dark' }}">{{ ucwords($record->direction) }}</span>
+                            <p>
+                                Currently punched <span class="badge badge-{{ ($record->direction == 'in') ? 'success' : 'dark' }}">{{ ucwords($record->direction) }}</span>
                         at <span class="stamp">{{ $record->stamp->tz('America/New_York')->format('D M d Y H:i:s O')  }}</span>
+                            </p>
 
                         @else
-                            Not currently punched.
-                        @endif;
+                            <p>
+                                Not currently punched.
+                            </p>
+
+                        @endif
 
                         <div class="actions">
                             <a class="btn btn-sm btn-light text-primary" href="{{ route('timeclock.show') }}"><span class="fa fa-clock"></span> Punch Clock</a>
@@ -36,11 +41,6 @@
 
 
                     </div>
-                    @else
-                        <div class="actions">
-                            <a class="btn btn-sm btn-light text-primary" href="{{ route('timeclock.show') }}"><span class="fa fa-clock"></span> Punch Clock</a>
-                        </div>
-                    @endif
                 </div>
             </div>
         </div>
