@@ -16,19 +16,30 @@
 
                     Hello, {{ explode(' ', Auth::user()->name)[0] }}. You are logged in!
 
-                    @if (isset($record))
+
                     <div class="punch-status bg-primary text-light">
                         <h4>Current Punch Status</h4>
 
 
-                        Currently punched <span class="badge badge-{{ ($record->direction == 'in') ? 'success' : 'dark' }}">{{ ucwords($record->direction) }}</span>
+                        @if (isset($record))
+                            Currently punched <span class="badge badge-{{ ($record->direction == 'in') ? 'success' : 'dark' }}">{{ ucwords($record->direction) }}</span>
                         at <span class="stamp">{{ $record->stamp->tz('America/New_York')->format('D M d Y H:i:s O')  }}</span>
+
+                        @else
+                            Not currently punched.
+                        @endif;
 
                         <div class="actions">
                             <a class="btn btn-sm btn-light text-primary" href="{{ route('timeclock.show') }}"><span class="fa fa-clock"></span> Punch Clock</a>
-                            <a class="btn btn-sm btn-light text-secondary" href="{{ route('reporting.timesheet') }}"><span class="fa fa-table"></span> View Timesheet</a>
+                            @if(isset($record))<a class="btn btn-sm btn-light text-secondary" href="{{ route('reporting.timesheet') }}"><span class="fa fa-table"></span> View Timesheet</a>@endif
                         </div>
+
+
                     </div>
+                    @else
+                        <div class="actions">
+                            <a class="btn btn-sm btn-light text-primary" href="{{ route('timeclock.show') }}"><span class="fa fa-clock"></span> Punch Clock</a>
+                        </div>
                     @endif
                 </div>
             </div>
