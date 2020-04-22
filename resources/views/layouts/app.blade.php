@@ -47,7 +47,7 @@
                                     Reporting
                                 </a>
                                 <div class="dropdown-menu" aria-labelledby="mnuMainTimeclock">
-                                    <a class="dropdown-item" href="{{ route('timeclock.show') }}">View Timesheet...</a>
+                                    <a class="dropdown-item" href="{{ route('reporting.timesheet') }}">View Timesheet...</a>
                                 </div>
                             </li>
                         @endauth

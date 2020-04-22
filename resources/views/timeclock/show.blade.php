@@ -66,18 +66,30 @@
                             <script type="text/javascript">
                                 var tick = setInterval(() => {
                                     var currentTime = new Date();
-                                    var lblCurrentTime = document.getElementsByClassName('lblCurrentTime')[0];
-                                    var txtStampedTime = document.getElementById('txtStampedTime');
+                                    var lblCurrentTime  = document.getElementsByClassName('lblCurrentTime')[0];
+                                    var txtStampedTime  = document.getElementById('txtStampedTime');
+                                    var cmdSubmit       = document.getElementById('cmdSubmit');
 
                                     lblCurrentTime.innerHTML = currentTime.toString();
                                     txtStampedTime.value = currentTime.getTime()/1000|0;
+
+
+                                    // 20200422, nbarr: enable the punch clock button now that the stamp has
+                                    //   been properly initiated.
+                                    if (typeof(cmdSubmit) !== "undefined" && cmdSubmit.disabled)
+                                    {
+                                        cmdSubmit.disabled = false;
+                                    }
+
+
                                 }, 1000);
                             </script>
                         </div>
 
                         <div class="card-footer">
-                            <button id="cmdSubmit" name="cmdSubmit" class="btn btn-primary" type="submit">
+                            <button id="cmdSubmit" name="cmdSubmit" disabled class="btn btn-primary" type="submit">
                                 <span class="fa fa-clock"></span> Punch Clock</button>
+
                             <a id="cmdClose" title="Close clock and return to dashboard" href="{{ route('home') }}"
                                class="btn btn-outline-dark"><span class="fa fa-times"></span> Close</a>
                         </div>

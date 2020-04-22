@@ -9,14 +9,25 @@
 
     class TimeclockController extends ProtectedController
     {
-        // GET /clock
+        /**
+         * Display the time clock UI.
+         *
+         * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\View\View
+         */
         public function clock()
         {
             $viewData = [];
             return view('timeclock.show', $viewData);
         }
 
-        // POST /clock
+        /**
+         * Commit the timeclock request to the database.
+         *
+         * Redirects back to the punch with an error if save failed; otherwise returns a success message.
+         *
+         * @param PunchClockRequest $request
+         * @return \Illuminate\Http\RedirectResponse
+         */
         public function punch(PunchClockRequest $request)
         {
             $data = $request->validated();

@@ -7,9 +7,11 @@
     {
 
         /**
-         * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\Http\RedirectResponse|\Illuminate\View\View
-         *
          * Handle the front door of the application.
+         *
+         * Redirects logged-in users to the home/dashboard screen.
+         *
+         * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\Http\RedirectResponse|\Illuminate\View\View
          */
         public function index() {
 

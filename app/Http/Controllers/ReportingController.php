@@ -7,10 +7,15 @@
     class ReportingController extends ProtectedController
     {
 
+        /**
+         * Generate the timesheet report.
+         *
+         * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\View\View
+         */
         public function timesheet()
         {
             $viewData = [
-                'records' => TimeclockRepository::getAllForUserDescending(Auth::user())->paginate(5)
+                'records' => TimeclockRepository::getAllForUserDescending(Auth::user())->paginate(6)
 
             ];
 

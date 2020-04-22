@@ -34,16 +34,19 @@ Timetracker is built upon Laravel (v7), and uses Bootstrap.
    - Roles and Permissions
    - Audit Trails
    - Daily punch rate-limits.
- - Swap out the hardcoded timezones for a more user-based approach.
+ - Timezone upgrades
+    - Change out hardcoded references in the code for what's in the user's profile.
+    - Allow user to select timezone preference at registration. 
  - Report filters/searching.
  - Implement a more 'mobile-centric' design to be used outside the desktop.
  - Develop a project tracking module for assigning time to different projects.
+ - User profile page to update name/preferences.
  
 
 
 
 
-Nicholas Barr http://nicholasbarr.net/
+-- Nicholas Barr http://nicholasbarr.net/
 
 
 

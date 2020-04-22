@@ -15,11 +15,16 @@
     class TimeclockRepository
     {
 
-        public static function getLatestForUser(User $user, $orderBy = 'desc')
+        /**
+         * Returns the latest timeclock entry for a specified user, null if none found.
+         *
+         * @param User $user
+         * @param string $orderBy
+         * @return mixed
+         */
+        public static function getLatestForUser(User $user)
         {
-            return Timeclock::where(['user_id' => $user->id])
-                ->orderBy('stamp', $orderBy)
-                ->first();
+            return self::getAllForUserDescending($user)->first();
         }
 
 
@@ -30,27 +35,26 @@
         }
 
         /**
+         * Determine the next direction in sequence, and add punch to database.
+         *
          * @param User $user
          * @param $data
          * @return mixed
          *
-         * Determine the next direction in sequence, and add punch to database.
+         *
          */
         public static function punchClock(User $user, $data)
         {
 
             // find the latest punch to get the last direction the user punched.
             $nextDirection = 'in';
-            $latestPunch = Timeclock::where(['user_id' => $user->id])
-                ->orderBy('created_at', 'DESC')
-                ->first();
+            $latestPunch = self::getLatestForUser($user);
 
 
             if (!is_null($latestPunch) && $latestPunch->direction == 'in')
             {
                 $nextDirection = 'out';
             }
-
 
             return Timeclock::create([
                 'user_id' => $user->id,
