@@ -18,7 +18,10 @@ Timetracker is built upon Laravel (v7), and uses Bootstrap.
  1. Ensure a proper database has been set up.
  1. Run `composer install`
  1. Copy *.env.example* file to *.env*
- 1. Set the database credentials for the selected database in the *.env* file.
+ 1. Run `php artisan key:generate`
+ 1. Update the .env file with the desired settings.
+    1. Update the *APP_NAME* variable with your desired application name.
+    1. Set the database credentials for the selected database in the *.env* file.
  1. Run `php artisan migrate` to get the database up to speed.
  
  You should now be able to run `php artisan serve` to use this application
