@@ -14,7 +14,7 @@
                         {{ ($loop->odd) ? 'text-primary' : 'text-secondary' }}
                         {{ ($tc->direction == 'out') ? 'fa-arrow-circle-right' : 'fa-arrow-circle-left' }}"></span>
                 </td>
-                <td>{{ (\Carbon\Carbon::createFromTimestamp($tc->stamp))->format('F d, Y g:i a') }}</td>
+                <td>{{ $tc->stamp->tz('America/New_York')->format('D M d Y H:i:s O') }}</td>
 
             </tr>
             @endforeach
