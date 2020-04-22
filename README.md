@@ -33,6 +33,7 @@ Timetracker is built upon Laravel (v7), and uses Bootstrap.
  - Add accounting and auditing features.
    - Roles and Permissions
    - Audit Trails
+   - Daily punch rate-limits.
  - Swap out the hardcoded timezones for a more user-based approach.
  - Report filters/searching.
  - Implement a more 'mobile-centric' design to be used outside the desktop.
