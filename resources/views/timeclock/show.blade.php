@@ -8,7 +8,7 @@
             var txtStampedTime = document.getElementById('txtStampedTime');
 
             lblCurrentTime.innerHTML = currentTime.toString();
-            txtStampedTime.value = currentTime.getTime();
+            txtStampedTime.value = currentTime.getTime()/1000|0;
         }, 1000);
     </script>
 @endsection

@@ -15,6 +15,10 @@ class Timeclock extends Model
         'stamp'
     ];
 
+    protected $dates = [
+        'stamp'
+    ];
+
 
     public function user()
     {

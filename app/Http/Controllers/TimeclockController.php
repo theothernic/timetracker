@@ -2,6 +2,7 @@
     namespace App\Http\Controllers;
 
 
+    use App\Helpers\TzHelper;
     use App\Http\Requests\PunchClockRequest;
     use App\Repositories\TimeclockRepository;
     use Illuminate\Support\Facades\Auth;
@@ -25,6 +26,7 @@
                 return redirect()->route('timeclock.show')->withErrors('Could not save time punch to the database.');
             }
 
-            return redirect()->route('timeclock.show')->with('success', 'Successfully punched ' . $timeclock->direction . '.');
+            return redirect()->route('timeclock.show')->with('success', 'Successfully punched '
+                . $timeclock->direction . ' on ' . $timeclock->stamp->tz('America/New_York')->format('D M d Y H:i:s O'));
         }
     }

@@ -1,6 +1,8 @@
 <?php
     namespace App\Http\Controllers;
 
+    use Illuminate\Support\Facades\Auth;
+
     class ReportingController extends ProtectedController
     {
 
