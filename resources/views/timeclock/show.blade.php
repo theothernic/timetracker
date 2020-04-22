@@ -1,20 +1,8 @@
 @extends('layouts.app')
 
-@section('scripts-bottom')
-    <script type="text/javascript">
-        var tick = setInterval(() => {
-            var currentTime = new Date();
-            var lblCurrentTime = document.getElementsByClassName('lblCurrentTime')[0];
-            var txtStampedTime = document.getElementById('txtStampedTime');
-
-            lblCurrentTime.innerHTML = currentTime.toString();
-            txtStampedTime.value = currentTime.getTime()/1000|0;
-        }, 1000);
-    </script>
-@endsection
 
 @section('messages')
-    @if ($errors->any() || Session::has('success'))
+    @if ($errors->any() || session('success'))
     <div class="container">
         <div class="row">
             <div class="col-md-3"></div>
@@ -33,12 +21,12 @@
                 @endif
 
 
-                @if(Session::has('success'))
+                @if(session('success'))
                 <div class="alert alert-success">
                     <h3>Success!</h3>
 
                     <p>
-                        {{ Session::get('success') }}
+                        {{ session('success') }}
                     </p>
                 </div>
                 @endif
@@ -72,8 +60,19 @@
                         </div>
 
                         <div class="card-body">
-                            <div class="displayTime">Time now is: <strong><span class="lblCurrentTime"></span></strong></div>
+                            <div class="displayTime">Time now is: <strong><span class="lblCurrentTime">(one moment, please...)</span></strong></div>
                             <input type="hidden" id="txtStampedTime" name="stamp" />
+
+                            <script type="text/javascript">
+                                var tick = setInterval(() => {
+                                    var currentTime = new Date();
+                                    var lblCurrentTime = document.getElementsByClassName('lblCurrentTime')[0];
+                                    var txtStampedTime = document.getElementById('txtStampedTime');
+
+                                    lblCurrentTime.innerHTML = currentTime.toString();
+                                    txtStampedTime.value = currentTime.getTime()/1000|0;
+                                }, 1000);
+                            </script>
                         </div>
 
                         <div class="card-footer">

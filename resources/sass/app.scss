@@ -23,4 +23,20 @@
         padding-right: 1rem;
         justify-content: center;
     }
+
+
+}
+
+.punch-status
+{
+    margin: 1rem 0 0 0;
+
+    .status-badge
+    {
+        font-size: 1.2rem;
+    }
+
+    .actions {
+        margin: 0.5rem 0 0 0;
+    }
 }

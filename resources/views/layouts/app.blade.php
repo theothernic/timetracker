@@ -34,11 +34,21 @@
                     <!-- Left Side Of Navbar -->
                     <ul class="navbar-nav mr-auto">
                         @auth
-                            <li class="nav-item">
-                                <a class="nav-link" href="{{ route('timeclock.show') }}">Show Timeclock</a>
+                            <li class="nav-item dropdown">
+                                <a class="nav-link dropdown-toggle" href="#" id="mnuMainTimeclock" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                    Timeclock
+                                </a>
+                                <div class="dropdown-menu" aria-labelledby="mnuMainTimeclock">
+                                    <a class="dropdown-item" href="{{ route('timeclock.show') }}">Punch Clock...</a>
+                                </div>
                             </li>
-                            <li class="nav-item">
-                                <a class="nav-link" href="{{ route('reporting.timesheet') }}">View Timesheet</a>
+                            <li class="nav-item dropdown">
+                                <a class="nav-link dropdown-toggle" href="#" id="mnuMainReporting" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                    Reporting
+                                </a>
+                                <div class="dropdown-menu" aria-labelledby="mnuMainTimeclock">
+                                    <a class="dropdown-item" href="{{ route('timeclock.show') }}">View Timesheet...</a>
+                                </div>
                             </li>
                         @endauth
                     </ul>
@@ -83,7 +93,5 @@
             @yield('content')
         </main>
     </div>
-
-    @yield('scripts-bottom')
 </body>
 </html>

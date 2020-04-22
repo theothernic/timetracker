@@ -6,13 +6,27 @@
     use App\User;
     use Illuminate\Auth\Authenticatable;
 
+    /**
+     * Class TimeclockRepository
+     * @package App\Repositories
+     *
+     * return a single Timeclock record for the specified $user;
+     */
     class TimeclockRepository
     {
+
+        public static function getLatestForUser(User $user, $orderBy = 'desc')
+        {
+            return Timeclock::where(['user_id' => $user->id])
+                ->orderBy('stamp', $orderBy)
+                ->first();
+        }
+
 
         public static function getAllForUserDescending(User $user)
         {
             return Timeclock::where(['user_id' => $user->id])
-                ->orderBy('created_at', 'DESC');
+                ->orderBy('stamp', 'DESC');
         }
 
         /**
